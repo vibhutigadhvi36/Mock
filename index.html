@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Management System</title>
+    
+    <!-- 1. FIXED: Replaced placeholder cloudflare link with actual Font Awesome CDN -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"> 
+    
+    <!-- 2. FIXED: Replaced placeholder googleapis link with the proper Poppins Font import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap brand-icon"></i>
+                <div>
+                    <h2>SRMS</h2>
+                    <p>Student Result<br>Management System</p>
+                </div>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active"><i class="fa-solid fa-house"></i> Dashboard</a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-users"></i> Students</a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-file-invoice"></i> Results</a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-chart-bar"></i> Reports</a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-gear"></i> Settings</a>
+            </nav>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="nav-left">
+                    <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search students, results...">
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div class="notification-icon">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge"></span>
+                    </div>
+                    <div class="user-profile">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <div class="user-info">
+                            <span class="user-name">Admin User</span>
+                            <span class="user-role">Administrator</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Body Workspace -->
+            <div class="dashboard-body">
+                <!-- Hero Banner Section -->
+                <section class="hero-banner">
+                    <div class="hero-text">
+                        <h1>Student Result Management System</h1>
+                        <p>Manage student marks, grades, and performance easily.</p>
+                    </div>
+                    <div class="hero-image">
+                        <div class="diploma-card">
+                            <!-- Using standard text placeholder icon until you add local image -->
+                            <!-- Adjust the percentage (e.g., 60%, 80%, or 100%) to get the perfect size -->
+<img src="Images-used/hero-banner.png" alt="Hero Banner" style="width: 150%; max-width: 400px; height: auto;">
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Statistics Overview Grid -->
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue-bg"><i class="fa-solid fa-users"></i></div>
+                        <div class="stat-details">
+                            <h3>Total Students</h3>
+                            <div class="stat-value" id="total-students">120</div>
+                            <span class="trend up"><i class="fa-solid fa-arrow-up"></i> 12% Registered</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green-bg"><i class="fa-solid fa-circle-check"></i></div>
+                        <div class="stat-details">
+                            <h3>Passed</h3>
+                            <div class="stat-value" id="total-passed">98</div>
+                            <span class="trend up"><i class="fa-solid fa-arrow-up"></i> <span id="pass-rate">81.7%</span> pass rate</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red-bg"><i class="fa-solid fa-circle-xmark"></i></div>
+                        <div class="stat-details">
+                            <h3>Failed</h3>
+                            <div class="stat-value" id="total-failed">22</div>
+                            <span class="trend down"><i class="fa-solid fa-arrow-down"></i> 18.3% failed</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange-bg"><i class="fa-solid fa-chart-pie"></i></div>
+                        <div class="stat-details">
+                            <h3>Average Percentage</h3>
+                            <div class="stat-value" id="avg-percentage">72.6%</div>
+                            <span class="trend up"><i class="fa-solid fa-arrow-up"></i> 5% Overall performance</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Columns Layout -->
+                <div class="two-column-layout">
+                    <!-- Left Column: Results Table Section -->
+                    <div class="table-container">
+                        <div class="table-header">
+                            <h2>Student Results</h2>
+                            <div class="table-actions">
+                                <div class="table-search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" id="table-search-input" placeholder="Search student...">
+                                </div>
+                                <select class="filter-dropdown">
+                                    <option>All Courses</option>
+                                </select>
+                                <select class="filter-dropdown">
+                                    <option>Sort by Percentage</option>
+                                </select>
+                                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Result</button>
+                            </div>
+                        </div>
+                        <div class="responsive-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Roll No</th>
+                                        <th>Student Name</th>
+                                        <th>Course</th>
+                                        <th>Math</th>
+                                        <th>Science</th>
+                                        <th>English</th>
+                                        <th>Total</th>
+                                        <th>Percentage</th>
+                                        <th>Grade</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="results-table-body">
+                                    <!-- Dynamic rows from JS will load here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Sidebar Panels -->
+                    <div class="right-panels">
+                        <!-- Add/Edit Result Form Card -->
+                        <div class="panel-card form-panel">
+                            <h3><i class="fa-solid fa-square-plus"></i> Add / Edit Result</h3>
+                            
+                            <!-- 3. FIXED: Completed the broken form tags and wrapped structural containers -->
+                            <form id="result-form">
+                                <div style="padding: 10px 0;">
+                                    <input type="text" placeholder="Student Name" required style="width:100%; margin-bottom:10px; padding:8px;">
+                                    <input type="number" placeholder="Roll No" required style="width:100%; margin-bottom:10px; padding:8px;">
+                                    <button type="submit" style="padding: 8px 16px; background: var(--primary-color); color: white; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 4. FIXED: Properly linked your external JavaScript file at the closing element boundary -->
+    <script src="script.js"></script>
+</body>
+</html>
