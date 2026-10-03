@@ -21,8 +21,6 @@ This project is designed to manage and display student result information throug
 - JavaScript
 - Responsive Web Design
 
-  ## 📸 Screenshots
-
 ## 📸 Screenshots
 
 ### Dashboard
